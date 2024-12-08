@@ -1,24 +1,12 @@
    // score variables
    let humanScore = 0;
    let computerScore = 0;
+   let humanChoices = null;
 
-// playGame function
-
-  function playGame () {
- 
     function getHumanChoice() {
-        let humanChoices = ["rock", "paper", "scissors"];
-        let humanPrompt = prompt("Make Your Selection (rock, paper, or scissors):").toLowerCase();
-        if (humanChoices.includes(humanPrompt)) {
-            return humanPrompt;
-        }
-        else { //added else statement
-            console.log("invalid, choose again...");
-            return getHumanChoice();
-        }
-     
-    }
-    
+       return humanChoices;
+};
+
     /* updated function to return computer choice */
     function getComputerChoice() {
        let computerIndex = Math.floor(Math.random() * 3);
@@ -73,6 +61,14 @@ function playRound(humanChoice, computerChoice) {
     console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
     return result;
 }
+
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("choice")) {
+        humanChoices = event.target.id;
+         playRound();
+    }
+});
+/*
 const targetScore = 5;
 while (humanScore < targetScore && computerScore < targetScore) {
     const humanChoice = getHumanChoice();
@@ -80,7 +76,7 @@ while (humanScore < targetScore && computerScore < targetScore) {
     console.log(`Human: ${humanChoice}, Computer: ${computerChoice}`);
     console.log(playRound(humanChoice, computerChoice));
     }
-
+*/
     // Announce final result
     console.log("Game Over!");
     if (humanScore > computerScore) {
@@ -88,13 +84,3 @@ while (humanScore < targetScore && computerScore < targetScore) {
     } else {
         console.log("The computer wins the game. Better luck next time!");
     }
-}
-
-
-
-
-
-
-// calling the function
-
-playGame();
