@@ -51,15 +51,14 @@ function playRound(humanChoice, computerChoice) {
     }
     
     // score increase
-    if (result === "You're a Winner!") {
-        humanScore++;
+    function resultIncrease() {
+        if (result === "You're a Winner!") {
+            humanScore++;
     }
-    if (result === "Computer Wins! Try again next time...") {
-        computerScore++;
+        if (result === "Computer Wins! Try again next time...") {
+            computerScore++;
     }
-
-    console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
-    return result;
+}
 }
 
 document.addEventListener("click", (event) => {
@@ -68,6 +67,15 @@ document.addEventListener("click", (event) => {
          playRound();
     }
 });
+
+// adding results function. figure out how to print results to screen and increment score kept in separate div
+function getResults(humanChoice, computerChoice, result) {
+    const resultsDiv = document.getElementById("#results");
+    resultsDiv.createElement("p");
+    p.textContent =  "Human: ${humanChoice}, Computer: ${computerChoice}, Result: ${result}"; 
+}
+
+<p>Human Score: ${humanScore}, Computer Score: ${computerScore}</p>
 /*
 const targetScore = 5;
 while (humanScore < targetScore && computerScore < targetScore) {
@@ -84,3 +92,4 @@ while (humanScore < targetScore && computerScore < targetScore) {
     } else {
         console.log("The computer wins the game. Better luck next time!");
     }
+
